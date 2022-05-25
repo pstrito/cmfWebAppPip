@@ -160,20 +160,25 @@ class mf_movement():
         print('Spearmans correlation: %.3f' % corr)
 
     def output_signal(self):
+        import time
         #date = df1.index[0].strftime('%Y-%m-%d')
         print('WARNING: This is for illustration and entertainment purposes ONLY.')
         print('Do NOT use this information for anything. This includes but is not limited to any financial ')
         print('decisions, and/or stock, option and/or bond purchases, real estate transactions or any other decision. If you' )
         print('disregard this warning you do so at your sole risk and you assume all responsibility for the consequences.')
-        print('By disregarding this warning you also agree that you will indemnify Kokoro Analytics, its officers,')
+        print('In using this applicaiton you also agree that you will indemnify Kokoro Analytics, its officers,')
         print('employees, volunteers, vendors and contractors from any damages incured from disregarding this warning.\n')
         
+        time.sleep(.5)
         agreement = input('Press enter if you have read and will abide by the "Warning" statement above.')
         
         if agreement != '':
             import sys 
             print('\nThank you for your interest but we cannot go any further because you entered something other than enter! \nHave a great day!')
             sys.exit()
+            
+        print('\nWe use the Chaikin Money Flow indicator. What is the Chaikin Money Flow? See the link below.')
+        print('https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/cmf\n')
         
     def smoothing(self, df):
         import numpy as np
@@ -216,3 +221,4 @@ class mf_movement():
         plt.ylabel("Y")
     
         plt.show()
+
