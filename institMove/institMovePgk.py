@@ -16,7 +16,7 @@ class mf_movement():
         df['Date'] = pd.to_datetime(df['Date'])
         
     def cmf(self, df):
-        self.num_days = int(input('What the is the group size to be used for the cmf? '))
+        self.num_days = int(input('What is the group size to be used for the cmf? '))
         df['pre_cmf'] = ((df['close_low'] - df['high_close']) / df['high_low']) * df['Volume']
         df['cmf'] = df['pre_cmf'].rolling(self.num_days).sum() / df['Volume'].rolling(self.num_days).sum()
         df = df.dropna()
@@ -139,7 +139,7 @@ class mf_movement():
         plt.xticks(rotation = 45) # Rotates X-Axis Ticks by 45-degrees
         plt.title("CMF vs Adjusted Normalized Close Curve") 
         plt.plot(df.index, df['cmf'] , c='b', label="cmf") #plots 
-        plt.plot(df.index, df['adjusted_normalized_close'] , c='r', label="adjusted normalized close") #plots the
+        plt.plot(df.index, df['adjusted_normalized_close'] , c='r', label="adjusted normalized close price") #plots the
         plt.plot(df.index, df['zero_line'] , c = 'k')
         plt.legend(loc="upper left")
 
@@ -164,9 +164,9 @@ class mf_movement():
         #date = df1.index[0].strftime('%Y-%m-%d')
         print('WARNING: This is for illustration and entertainment purposes ONLY.')
         print('Do NOT use this information for anything. This includes but is not limited to any financial ')
-        print('decisions, and/or stock, option and/or bond purchases, real estate transactions or any other decision. If you' )
-        print('disregard this warning you do so at your sole risk and you assume all responsibility for the consequences.')
-        print('In using this applicaiton you also agree that you will indemnify Kokoro Analytics, its officers,')
+        print('decisions, and/or stock, option and/or bond purchases or sales, real estate transactions or any other decision.' )
+        print('If you disregard this warning you do so at your sole risk and you assume all responsibility for the consequences.')
+        print('In using this application you also agree that you will indemnify Kokoro Analytics, its officers,')
         print('employees, volunteers, vendors and contractors from any damages incured from disregarding this warning.\n')
         
         time.sleep(.5)
@@ -211,7 +211,7 @@ class mf_movement():
         # Plotting the Graph
         plt.figure(figsize=(8, 5))
         plt.plot(X_, Y_, c = 'b', label = 'cmf')
-        plt.plot(X_, Z_, c = 'r', label = 'adjusted nomalized close')
+        plt.plot(X_, Z_, c = 'r', label = 'adjusted nomalized close price')
         plt.plot(X_, ZERO_, c = 'k')
         plt.legend(loc="upper left")
         plt.title("Smoothed CMF vs Adjusted Normalized Close Curve") 
